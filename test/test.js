@@ -23,5 +23,31 @@ describe("Social Networking Kata Tests", () => {
 
             expect(result).to.deep.equal(expectedResult)
         })
+
+        it(`Bob published "It's cold outside", when he views his timeline, he sees "It's cold outside"`, () => {
+            const bob = new User()
+            const message = "It's cold outside"
+
+            bob.publish(message)
+
+            const result = bob.viewTimeline();
+            const expectedResult = [message]
+
+            expect(result).to.deep.equal(expectedResult)
+        })
+
+        it(`Bob published "It's cold outside" and "I wish it were spring", when he views his timeline, he sees "It's cold outside" and "I wish it were spring"`, () => {
+            const bob = new User()
+            const message = "It's cold outside"
+            const message2 = "I wish it were spring"
+
+            bob.publish(message)
+            bob.publish(message2)
+
+            const result = bob.viewTimeline();
+            const expectedResult = [message, message2]
+
+            expect(result).to.deep.equal(expectedResult)
+        })
     })
 })
