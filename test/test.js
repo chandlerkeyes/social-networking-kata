@@ -83,5 +83,21 @@ describe("Social Networking Kata Tests", () => {
 
             expect(result).to.deep.equal(expectedResult)
         })
+
+        it(`Alice publishes "I want ice cream", Bob publishes "Who's likes the Office?", Bob views Alice's timeline and sees "I want ice cream"`, () => {
+            const bob = new User()
+            const alice = new User()
+
+            const aliceMessage = "I want ice cream"
+            const bobMessage = "Who's likes the Office?"
+
+            alice.publish(aliceMessage)
+            bob.publish(bobMessage)
+
+            const result = bob.viewWall(alice)
+            const expectedResult = [aliceMessage]
+
+            expect(result).to.deep.equal(expectedResult)
+        })        
     })
 })
