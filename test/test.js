@@ -56,14 +56,14 @@ describe("Social Networking Kata Tests", () => {
             const bob = new User()
             const alice = new User()
 
-            const tweet1 = "I love the fall"
-            const tweet2 = "Not looking forward to winter"
+            const message = "I love the fall"
+            const message2 = "Not looking forward to winter"
 
-            bob.publish(tweet1)
-            bob.publish(tweet2)
+            bob.publish(message)
+            bob.publish(message2)
 
             const result = alice.viewWall(bob)
-            const expectedResult = [tweet1, tweet2]
+            const expectedResult = [message, message2]
 
             expect(result).to.deep.equal(expectedResult)
         })
@@ -72,14 +72,14 @@ describe("Social Networking Kata Tests", () => {
             const bob = new User()
             const alice = new User()
 
-            const tweet1 = "When will it be summer?"
-            const tweet2 = "Only 365 more days"
+            const message = "When will it be summer?"
+            const message2 = "Only 365 more days"
 
-            alice.publish(tweet1)
-            alice.publish(tweet2)
+            alice.publish(message)
+            alice.publish(message2)
 
             const result = bob.viewWall(alice)
-            const expectedResult = [tweet1, tweet2]
+            const expectedResult = [message, message2]
 
             expect(result).to.deep.equal(expectedResult)
         })
