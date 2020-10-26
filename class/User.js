@@ -1,28 +1,45 @@
+import moment from 'moment'
+
 export default class User {
     constructor() {
-        this.messages = []
+        this.posts = []
         this.follows = []; // Array of Users
     }
+
     getPosts() {
-        return this.messages;
+        return this.posts;
     }
+
+    sortByTimePosted(posts) {
+        const sortedPosts = posts.sort((a, b) => {
+            return moment(a.timeStamp).isAfter(b.timeStamp);
+        });
+
+        return sortedPosts.map((post) => {
+            return post.message
+        })
+    }
+
     viewTimeline() {
-        const posts = []
-        if (this.follows.length > 0) {
-            this.follows.map((User) => {
-                const userPosts = User.getPosts()
-                userPosts.map((message) => {
-                    posts.push(message)
-                })
-            })
-            return this.messages.concat(posts)
-        }
-        return this.getPosts()
+        let allPosts = this.getPosts();
+        const friends = this.follows;
+
+        friends.map((User) => {
+            const friendsPosts = User.getPosts();
+            allPosts = allPosts.concat(friendsPosts);
+        });
+        return this.sortByTimePosted(allPosts);
     }
 
     publish(message) {
-        this.messages.push(message)
+        const timeStamp = moment()
+        const post = {
+            message,
+            timeStamp
+        };
+        this.posts.push(post);
     }
+
 
     viewWall(User) {
         return User.viewTimeline()

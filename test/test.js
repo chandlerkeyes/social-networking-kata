@@ -117,7 +117,7 @@ describe("Social Networking Kata Tests", () => {
             expect(result).to.deep.equal(expectedResult)
         })
 
-        it(`Alice posts "Who likes football?", Charlie posts "It's Game night!", Charlie follows Alice and sees on his timeline, "Who likes football?" and "It's Game night!"`, () => {
+        it(`Alice posts "Who likes football?", Charlie posts "It's Game night!", Charlie follows Alice and sees on his timeline, "It's Game night!" and "Who likes football?"`, () => {
             const charlie = new User()
             const alice = new User()
 
@@ -130,6 +130,25 @@ describe("Social Networking Kata Tests", () => {
 
             const result = charlie.viewTimeline()
             const expectedResult = [charlieMessage, aliceMessage]
+
+            expect(result).to.deep.equal(expectedResult)
+        })
+
+        it(`Alice posts "Who likes football?", Charlie posts "It's Game night!", Charlie follows Alice, Alice posts "I got a new follower!" Charlie views his timeline and sees, "I got a new follower!", "It's Game night!", and  "Who likes football?"`, () => {
+            const charlie = new User()
+            const alice = new User()
+
+            const aliceMessage = "Who likes football?"
+            const charlieMessage = "It's Game night!"
+            const aliceMessage2 = "I got a new follower!"
+
+            alice.publish(aliceMessage)
+            charlie.publish(charlieMessage)
+            charlie.follow(alice)
+            alice.publish(aliceMessage2)
+
+            const result = charlie.viewTimeline()
+            const expectedResult = [aliceMessage2, charlieMessage, aliceMessage]
 
             expect(result).to.deep.equal(expectedResult)
         })
