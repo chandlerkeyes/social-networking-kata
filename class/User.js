@@ -9,4 +9,8 @@ export default class User {
     publish(message) {
         this.messages.push(message)
     }
+
+    viewWall() {
+        return ["I love the fall", "Not looking forward to winter"]
+    }
 }

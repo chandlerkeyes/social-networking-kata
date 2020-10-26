@@ -50,4 +50,22 @@ describe("Social Networking Kata Tests", () => {
             expect(result).to.deep.equal(expectedResult)
         })
     })
+
+    describe("Timeline", () => {
+        it(`Bob publishes "I love the fall", then publishes "Not looking forward to winter", Alice views his timeline and sees "I love the fall" and "Not looking forward to winter"`, () => {
+            const bob = new User()
+            const alice = new User()
+
+            const tweet1 = "I love the fall"
+            const tweet2 = "Not looking forward to winter"
+
+            bob.publish(tweet1)
+            bob.publish(tweet2)
+
+            const result = alice.viewWall(bob)
+            const expectedResult = [tweet1, tweet2]
+
+            expect(result).to.deep.equal(expectedResult)
+        })
+    })
 })
