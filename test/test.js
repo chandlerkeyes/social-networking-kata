@@ -134,6 +134,8 @@ describe("Social Networking Kata Tests", () => {
             expect(result).to.deep.equal(expectedResult)
         })
 
+        // TO DO: Posts need to be returned in the proper order. Sort the posts by their timestamp
+
         it(`Alice posts "Who likes football?", Charlie posts "It's Game night!", Charlie follows Alice, Alice posts "I got a new follower!" Charlie views his timeline and sees, "I got a new follower!", "It's Game night!", and  "Who likes football?"`, () => {
             const charlie = new User()
             const alice = new User()
