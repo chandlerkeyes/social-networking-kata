@@ -15,7 +15,7 @@ export default class User {
                     posts.push(message)
                 })
             })
-            return posts
+            return this.messages.concat(posts)
         }
         return this.getPosts()
     }

@@ -116,5 +116,22 @@ describe("Social Networking Kata Tests", () => {
 
             expect(result).to.deep.equal(expectedResult)
         })
+
+        it(`Alice posts "Who likes football?", Charlie posts "It's Game night!", Charlie follows Alice and sees on his timeline, "Who likes football?" and "It's Game night!"`, () => {
+            const charlie = new User()
+            const alice = new User()
+
+            const aliceMessage = "Who likes football?"
+            const charlieMessage = "It's Game night!"
+
+            alice.publish(aliceMessage)
+            charlie.publish(charlieMessage)
+            charlie.follow(alice)
+
+            const result = charlie.viewTimeline()
+            const expectedResult = [charlieMessage, aliceMessage]
+
+            expect(result).to.deep.equal(expectedResult)
+        })
     })
 })
