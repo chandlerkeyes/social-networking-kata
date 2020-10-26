@@ -10,7 +10,7 @@ export default class User {
         this.messages.push(message)
     }
 
-    viewWall() {
-        return ["I love the fall", "Not looking forward to winter"]
+    viewWall(User) {
+        return User.viewTimeline()
     }
 }

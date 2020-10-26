@@ -67,5 +67,21 @@ describe("Social Networking Kata Tests", () => {
 
             expect(result).to.deep.equal(expectedResult)
         })
+
+        it(`Alice publishes "When will it be summer?", then publishes "Only 365 more days", Bob views Alice's timeline and sees "When will it be summer?" and "Only 365 more days"`, () => {
+            const bob = new User()
+            const alice = new User()
+
+            const tweet1 = "When will it be summer?"
+            const tweet2 = "Only 365 more days"
+
+            alice.publish(tweet1)
+            alice.publish(tweet2)
+
+            const result = bob.viewWall(alice)
+            const expectedResult = [tweet1, tweet2]
+
+            expect(result).to.deep.equal(expectedResult)
+        })
     })
 })
